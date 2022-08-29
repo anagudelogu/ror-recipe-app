@@ -48,6 +48,9 @@ gem 'bootsnap', require: false
 # https://github.com/heartcombo/devise
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
+# https://github.com/CanCanCommunity/cancancan
+gem 'cancancan'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
