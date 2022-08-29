@@ -89,6 +89,7 @@ GEM
     bullet (7.0.3)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    cancancan (3.4.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -258,6 +259,8 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
+    tailwindcss-rails (2.0.12-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.0)
     turbo-rails (1.1.1)
@@ -293,6 +296,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bullet
+  cancancan
   capybara
   debug
   devise!
@@ -308,6 +312,7 @@ DEPENDENCIES
   simplecov
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
