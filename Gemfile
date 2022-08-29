@@ -96,3 +96,5 @@ group :test do
   # https://github.com/colszowka/simplecov
   gem 'simplecov', require: false
 end
+
+gem 'tailwindcss-rails', '~> 2.0'
