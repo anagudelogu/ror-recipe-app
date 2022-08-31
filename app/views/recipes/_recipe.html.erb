@@ -1,0 +1,11 @@
+<li>
+  <%= link_to recipe_path(recipe) do %>
+    <h3>
+      <%= recipe.name %>
+    </h3>
+    <p>
+      <%= recipe.description %>
+    </p>
+  <% end %>
+  <%= button_to "DELETE", recipe_path(recipe), method: :delete, data: { turbo: false } %>
+</li>
