@@ -1,0 +1,14 @@
+<%= link_to 'Add Food', new_food_path, data: {turbo: false} %>
+<table>
+  <thead>
+    <tr>
+        <th>Food</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @foods %>
+  </tbody>
+</table>
