@@ -10,7 +10,7 @@ RSpec.describe 'food/new', type: :system do
   end
   describe 'This view have to render the correct fields' do
     it 'renders the new food form' do
-      expect(page).to have_content('Add Food:')
+      expect(page).to have_selector('form', id: 'new-food-form')
     end
     it 'should display a form with a name field' do
       expect(page).to have_field('Name')
