@@ -10,16 +10,8 @@ RSpec.describe Food, type: :model do
         expect(food.name).to eq('apple')
       end
 
-      it 'has a measurement unit' do
-        expect(food.measurement_unit).to eq('kg')
-      end
-
       it 'has a price' do
         expect(food.price).to eq(1.5)
-      end
-
-      it 'has a quantity' do
-        expect(food.quantity).to eq(1)
       end
 
       it 'has a user' do
@@ -33,18 +25,8 @@ RSpec.describe Food, type: :model do
         expect(food).to_not be_valid
       end
 
-      it 'has a null measurement unit' do
-        food.measurement_unit = nil
-        expect(food).to_not be_valid
-      end
-
       it 'has a null price' do
         food.price = nil
-        expect(food).to_not be_valid
-      end
-
-      it 'has a null quantity' do
-        food.quantity = nil
         expect(food).to_not be_valid
       end
 
