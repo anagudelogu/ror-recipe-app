@@ -1,0 +1,18 @@
+<div id="recipe-details">
+  <h2><%= @recipe.name %></h2>
+  <small><%= @recipe.public? ? 'Public' : 'Private' %></small>
+  <p>
+    Preparation time: <%= @recipe.preparation_time %> minutes
+  </p>
+  <p>
+    Cooking time: <%= @recipe.cooking_time %> minutes
+  </p>
+  <p>
+    <%= @recipe.description %>
+  </p>
+
+  <%= link_to "Generate shopping list", shopping_list_path %>
+  <% if @recipe.user_id == current_user.id %>
+    <%= link_to "Add ingredient", new_food_path %>
+  <% end %>
+</div>

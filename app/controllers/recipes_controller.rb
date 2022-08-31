@@ -1,13 +1,12 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
   def index
     @recipes = Recipe.where(user: current_user)
   end
 
   def show; end
 
-  def new
-    @recipe = Recipe.new
-  end
+  def new; end
 
   def create
     recipe = current_user.recipes.build(recipe_params)
@@ -25,6 +24,10 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     redirect_to recipes_path
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
   end
 
   private
