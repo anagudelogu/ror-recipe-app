@@ -15,15 +15,15 @@
     <% if user_signed_in? %>
       <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %> 
       <nav>
-      <div><h3>Hello <%= current_user.name %></h3></div>
-      <ul>
-      <li>
-      <%= link_to "Recipes", recipes_path %> 
-      </li>
-      <li>
-      <%= link_to "Foods", foods_path %>
-      </li>
-      <li>
+        <div><h3>Hello <%= current_user.name %></h3></div>
+        <ul>
+          <li>
+          <%= link_to "Recipes", recipes_path %> 
+          </li>
+          <li>
+          <%= link_to "Foods", foods_path %>
+          </li>
+          <li>
             <%= link_to "Shopping list", shopping_list_path %>
           </li>
           <li>
