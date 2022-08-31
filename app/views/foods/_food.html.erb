@@ -1,8 +1,9 @@
 <tr id= <%= food.id %>>
-        <td><%=food.name %></td>
-        <td><%=food.measurement_unit %></td>
-        <td><%=food.price %></td>
-        <td>
-          <%= button_to "Delete", food_path(food.id), method: :delete, data: { turbo: false } %>
-        </td>
+  <td><%=food.name %></td>
+  <td><%=food.measurement_unit %></td>
+  <td><%=food.price %></td>
+  <td><%=food.quantity %></td>
+  <td>
+    <%= button_to "Delete", food_path(food.id), method: :delete, data: { turbo: false } %>
+  </td>
 </tr>

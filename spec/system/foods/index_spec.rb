@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.describe 'food/index', type: :system do
@@ -23,6 +24,7 @@ RSpec.describe 'food/index', type: :system do
         expect(page).to have_selector('th', text: 'Food')
         expect(page).to have_selector('th', text: 'Measurement Unit')
         expect(page).to have_selector('th', text: 'Unit Price')
+        expect(page).to have_selector('th', text: 'Quantity')
         expect(page).to have_selector('th', text: 'Actions')
       end
       # The column of food display a list with all names of foods that the user has
@@ -62,6 +64,19 @@ RSpec.describe 'food/index', type: :system do
         end
       end
 
+      # The column of quantity display a list with all quantities that the food has
+      it 'the column of quantity display a list with all quantities that the food has' do
+        within('tbody') do
+          rows_elements = all('tr', count: 3)
+          rows = rows_elements.map(&:text)
+          quantities = []
+          rows.each do |row|
+            quantities << row.split[3]
+          end
+          expect(quantities).to contain_exactly(@f1.quantity.to_s, @f2.quantity.to_s, @f3.quantity.to_s)
+        end
+      end
+
       # The column of actions display a list of buttons to erase the elements in the row
       it 'the column of actions display a list of buttons to erase the elements in the row' do
         within('tbody') do
@@ -69,7 +84,7 @@ RSpec.describe 'food/index', type: :system do
           rows = rows_elements.map(&:text)
           actions = []
           rows.each do |row|
-            actions << row.split[3]
+            actions << row.split[4]
           end
           expect(actions).to have_content('Delete', count: 3)
         end
@@ -100,3 +115,4 @@ RSpec.describe 'food/index', type: :system do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
