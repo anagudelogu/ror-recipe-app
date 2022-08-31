@@ -1,5 +1,4 @@
 require 'rails_helper'
-# rubocop:disable Metrics/BlockLength
 RSpec.describe 'RecipesDetails', type: :system do
   let(:user) { create(:user) }
 
@@ -46,7 +45,6 @@ RSpec.describe 'RecipesDetails', type: :system do
 
       context 'When I click on add ingredient' do
         it 'takes me to a form to create a new ingredient' do
-          pending
           click_on 'Add ingredient'
           expect(page).to have_current_path(new_food_path)
         end
@@ -71,4 +69,3 @@ RSpec.describe 'RecipesDetails', type: :system do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
