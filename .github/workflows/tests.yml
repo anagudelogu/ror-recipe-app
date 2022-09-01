@@ -35,7 +35,7 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bundle exec rake assets:precompile
-          bundle exec rails db:prepare RAILS_ENV=test
+          bundle exec rails db:create db:migrate RAILS_ENV=test
 
       - name: Run tests
         env:
