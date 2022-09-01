@@ -13,7 +13,7 @@
 
   <%= link_to "Generate shopping list", shopping_list_path %>
   <% if @recipe.user_id == current_user.id %>
-    <%= link_to "Add ingredient", new_food_path %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), data: {turbo: false} %>
   <% end %>
 
   <table>

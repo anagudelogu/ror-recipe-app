@@ -83,7 +83,7 @@ RSpec.describe 'RecipesDetails', type: :system do
       context 'When I click on add ingredient' do
         it 'takes me to a form to create a new ingredient' do
           click_on 'Add ingredient'
-          expect(page).to have_current_path(new_food_path)
+          expect(page).to have_current_path(new_recipe_recipe_food_path(@r1))
         end
       end
     end
