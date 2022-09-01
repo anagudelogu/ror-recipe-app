@@ -1,4 +1,5 @@
 require 'rails_helper'
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'RecipesDetails', type: :system do
   let(:user) { create(:user) }
 
@@ -7,6 +8,11 @@ RSpec.describe 'RecipesDetails', type: :system do
     user.confirm
 
     @r1 = create(:recipe, user:, name: 'r1', public: true)
+
+    @f1 = create(:food, name: 'apple')
+    @f2 = create(:food, name: 'orange')
+    @rf1 = create(:recipe_food, recipe: @r1, food: @f1, quantity: 5)
+    @rf2 = create(:recipe_food, recipe: @r1, food: @f2, quantity: 7)
 
     visit recipe_path(@r1)
   end
@@ -26,6 +32,37 @@ RSpec.describe 'RecipesDetails', type: :system do
     it "shows me 'Public' tag" do
       within('#recipe-details') do
         expect(page).to have_content(/public/i)
+      end
+    end
+
+    it 'shows me a table with the corresponding headers' do
+      expect(page).to have_selector('table')
+      table = find('table')
+      expect(table).to have_selector('thead')
+      within('thead') do
+        headers_elements = all('th', count: 4)
+        headers = headers_elements.map(&:text)
+        expect(headers).to contain_exactly('Food', 'Quantity', 'Value', 'Actions')
+      end
+    end
+
+    it 'shows me the correct quantity for each ingredient' do
+      within('tbody') do
+        rows_elements = all('tr', count: 2)
+        rows = rows_elements.map(&:text)
+        quantities = rows.map { |row| row.split[1].to_i }
+
+        expect(quantities).to contain_exactly(@rf1.quantity, @rf2.quantity)
+      end
+    end
+
+    it 'shows me the correct total value for each ingredient' do
+      within('tbody') do
+        rows_elements = all('tr', count: 2)
+        rows = rows_elements.map(&:text)
+        values = rows.map { |row| row.split[2].to_f }
+
+        expect(values).to contain_exactly(@rf1.quantity * @f1.price, @rf2.quantity * @f2.price)
       end
     end
 
@@ -69,3 +106,4 @@ RSpec.describe 'RecipesDetails', type: :system do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
