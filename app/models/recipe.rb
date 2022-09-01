@@ -7,4 +7,12 @@ class Recipe < ApplicationRecord
   validates :preparation_time, presence: true
   validates :cooking_time, presence: true
   validates :description, presence: true
+
+  def price
+    price = 0
+    foods.each do |food|
+      price += food.price
+    end
+    price.round(2)
+  end
 end
