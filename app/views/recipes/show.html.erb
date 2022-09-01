@@ -15,4 +15,25 @@
   <% if @recipe.user_id == current_user.id %>
     <%= link_to "Add ingredient", new_food_path %>
   <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ingredients.each do |ing| %>
+        <tr>
+          <td><%= ing.food.name %></td>
+          <td><%= ing.quantity %></td>
+          <td><%= ing.food.price * ing.quantity %></td>
+          <td><%= link_to "Remove" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
