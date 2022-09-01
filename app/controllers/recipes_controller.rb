@@ -4,7 +4,9 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(user: current_user)
   end
 
-  def show; end
+  def show
+    @ingredients = @recipe.recipe_foods.includes(:food)
+  end
 
   def new; end
 
