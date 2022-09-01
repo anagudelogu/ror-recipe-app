@@ -1,0 +1,17 @@
+<h3>Please choose your ingredients here:</h3>
+
+<%= form_with model: @recipe_food, url: recipe_recipe_foods_path, method: :post, local: true, data: {turbo: false}, id: "new-recipe-food-form" do |f| %>
+  <div>
+    <%= f.label :name, 'Ingredient:' %><br>
+    <%= f.select :food_id, current_user.foods.map { |food| ["#{food.name} (#{food.measurement_unit})", food.id]}, {}  %>
+  </div>
+  <div>
+    <%= f.label :quantity, 'Quantity' %><br>
+    <%= f.text_field :quantity, placeholder: 'Add the quantity...', required: true %><br>
+  </div>
+
+  <%= f.submit "Add new Ingredient" %>
+<% end %>
+
+<h3>If you didn't found the ingredient you were looking for: </h3>
+<%= link_to 'Create a new one', new_food_path, data: {turbo: false} %>

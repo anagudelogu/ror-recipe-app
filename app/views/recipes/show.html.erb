@@ -13,7 +13,7 @@
 
   <%= link_to "Generate shopping list", shopping_list_path %>
   <% if @recipe.user_id == current_user.id %>
-    <%= link_to "Add ingredient", new_food_path %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), data: {turbo: false} %>
   <% end %>
 
   <table>
@@ -22,7 +22,7 @@
         <th>Food</th>
         <th>Quantity</th>
         <th>Value</th>
-        <th>Actions</th>
+        <% if @recipe.user_id == current_user.id %> <th>Actions</th><% end %>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +31,9 @@
           <td><%= ing.food.name %></td>
           <td><%= ing.quantity %></td>
           <td><%= ing.food.price * ing.quantity %></td>
-          <td><%= link_to "Remove" %></td>
+          <% if @recipe.user_id == current_user.id %>
+           <td><%= button_to "Remove", recipe_recipe_food_path(@recipe, ing), method: :delete, data: { turbo: false } %>
+          </td> <% end %>
         </tr>
       <% end %>
     </tbody>

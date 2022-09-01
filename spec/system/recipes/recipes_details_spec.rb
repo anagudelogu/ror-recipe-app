@@ -80,17 +80,42 @@ RSpec.describe 'RecipesDetails', type: :system do
         expect(page).to have_link('Add ingredient')
       end
 
+      it 'shows me a button to remove the ingredient' do
+        within('tbody') do
+          remove_btn_elements = all('button', text: /remove/i, count: 2)
+          remove_btns = remove_btn_elements.map(&:text)
+          expect(remove_btns).to contain_exactly('Remove', 'Remove')
+        end
+      end
+
       context 'When I click on add ingredient' do
         it 'takes me to a form to create a new ingredient' do
           click_on 'Add ingredient'
-          expect(page).to have_current_path(new_food_path)
+          expect(page).to have_current_path(new_recipe_recipe_food_path(@r1))
+        end
+      end
+
+      context 'when I click on remove ingredient' do
+        it 'removes the ingredient' do
+          within('tbody') do
+            expect(all('tr').size).to eq(2)
+
+            within('tr', text: /#{@rf1.food.name}/i) do
+              click_on 'Remove'
+            end
+            expect(all('tr').size).to eq(1)
+          end
         end
       end
     end
 
     context "if I'm not the owner" do
       before do
-        @r2 = create(:recipe)
+        @r2 = create(:recipe, public: true)
+
+        @f3 = create(:food, name: 'apple')
+        @rf3 = create(:recipe_food, recipe: @r2, food: @f3, quantity: 5)
+
         visit recipe_path(@r2)
       end
 
@@ -98,8 +123,15 @@ RSpec.describe 'RecipesDetails', type: :system do
         expect(page).not_to have_link('Add ingredient')
       end
 
+      it "doesn't show me a button to remove ingredients" do
+        expect(page).not_to have_button('Remove')
+      end
+
       context 'and the recipe is not public' do
         it 'redirects me to root path' do
+          @r2.public = false
+          @r2.save
+          visit recipe_path(@r2)
           expect(page).to have_current_path(root_path)
         end
       end
