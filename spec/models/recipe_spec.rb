@@ -1,8 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
+  let(:recipe) { build(:recipe) }
+
+  describe '#price' do
+    it 'returns the total price to prepare the recipe' do
+      recipe.save
+      f1 = create(:food, price: 1.5)
+      f2 = create(:food, price: 2.5)
+
+      create(:recipe_food, recipe:, food: f1)
+      create(:recipe_food, recipe:, food: f2)
+
+      expect(recipe.price).to eq(f1.price + f2.price)
+    end
+  end
+
   describe 'validations' do
-    let(:recipe) { build(:recipe) }
     context 'when name is missing' do
       it 'should not be valid' do
         recipe.name = nil
