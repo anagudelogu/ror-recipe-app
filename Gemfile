@@ -30,6 +30,8 @@ gem 'jbuilder'
 # Linters
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+# https://github.com/bokmann/font-awesome-rails
+gem "font-awesome-rails"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

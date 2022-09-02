@@ -11,40 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  box-shadow: black 0 0 10px;
-  width: 100%;
-  margin: 0.5rem;
-}
-
-nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  list-style: none;
-}
-
-nav ul li {
-  padding: 10px;
-}
-
-nav ul li:focus,
-nav ul li:hover {
-  color: rgb(252, 86, 15);
-  font-weight: bold;
-}
