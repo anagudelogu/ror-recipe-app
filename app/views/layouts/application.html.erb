@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-200">
+  <body class="bg-gray-200 min-h-[90vh]">
     <% if user_signed_in? %>
     <header class="fixed w-full top-0 flex justify-between items-center px-4 py-3 bg-gray-500 shadow-lg">
       <h2 class="text-lg font-bold text-white">Hello <%= current_user.name %></h3>

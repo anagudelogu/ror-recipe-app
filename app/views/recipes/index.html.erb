@@ -1,5 +1,6 @@
-<%= link_to "Add recipe", new_recipe_path %>
-<ul id="recipes-list" class="flex flex-column justify-center w-auto">
-  <%= render @recipes %>
-  
-</ul>
+<section class="flex flex-col justify-center items-center pt-10">
+  <%= link_to "Add recipe", new_recipe_path, class: 'btn-primary' %>
+  <ul id="recipes-list" class="mt-10 w-full">
+    <%= render @recipes %>
+  </ul>
+</section>
