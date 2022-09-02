@@ -1,11 +1,12 @@
-<ul id="public-recipes">
+<h3 class="text-center ">Enjoy our recipes:</h3>
+<ul id="public-recipes" class="flex flex-col m-auto text-center">
   <% @public_recipes.each do |recipe| %>
     <li>
       <%= link_to recipe_path(recipe) do %>
-        <h3>
+        <h3 class="font-bold font-xl">
           <%= recipe.name %>
         </h3>
-        <p>
+        <p class="font-ms">
           By: <%= recipe.user.name %>
         </p>
         <span>
