@@ -1,4 +1,7 @@
 <h1>Shopping List</h1>
+<div>TOTAL INGREDIENTS: <%= amount_of_ingredients(@ingredients) %></div>
+<div>TOTAL PRICE: <%= total_price(@ingredients) %></div>
+
 <table>
   <thead>
     <tr>
@@ -8,12 +11,27 @@
     </tr>
   </thead>
   <tbody>
-    <% @shopping_list.each do |food, obj| %>
-      <tr>
-        <td><%= food %></td>
-        <td><%= obj[:qt] %></td>
-        <td><%= obj[:price] * obj[:qt] %></td>
-      </tr>
+    <% @ingredients.each do |rf| %>
+      <% if ingredient(rf) %>
+        <tr>
+          <td>
+            <%= ingredient(rf)[:name] %>
+          </td>
+          <td>
+            <%= ingredient(rf)[:quantity] %>
+          </td>
+          <td>
+            <%= ingredient(rf)[:price].round(2) %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
+    <tfoot>
+      <tr>
+        <th>TOTAL:</th>
+        <td><%= total_ingredients(@ingredients) %></td>
+        <td><%= total_price(@ingredients) %></td>
+      </tr>
+    </tfoot>
   </tbody>
 </table>
