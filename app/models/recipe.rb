@@ -15,14 +15,4 @@ class Recipe < ApplicationRecord
     end
     price.round(2)
   end
-
-  def ingredients
-    hash = {}
-    recipe_foods.includes(:food).each do |recipe_food|
-      key = recipe_food.food.name
-      quantity = recipe_food.quantity
-      hash[key] ? hash[key] += quantity : hash[key] = quantity
-    end
-    hash
-  end
 end

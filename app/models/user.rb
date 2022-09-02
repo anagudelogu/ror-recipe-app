@@ -7,14 +7,4 @@ class User < ApplicationRecord
   has_many :recipes
 
   validates :name, presence: true
-
-  def inventory
-    hash = {}
-    foods.each do |food|
-      key = food.name
-      quantity = food.quantity
-      hash[key] ? hash[key][:qt] += quantity : hash[key] = { qt: quantity, price: food.price }
-    end
-    hash
-  end
 end
