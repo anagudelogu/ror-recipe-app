@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-200">
     <% if user_signed_in? %>
       <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %> 
       <nav>
@@ -37,7 +37,9 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-    
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
