@@ -1,0 +1,19 @@
+<h1>Shopping List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shopping_list.each do |food, obj| %>
+      <tr>
+        <td><%= food %></td>
+        <td><%= obj[:qt] %></td>
+        <td><%= obj[:price] * obj[:qt] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

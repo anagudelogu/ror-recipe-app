@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -20,6 +28,8 @@ nav {
   align-items: center;
   padding: 10px;
   box-shadow: black 0 0 10px;
+  width: 100%;
+  margin: 0.5rem;
 }
 
 nav ul {
