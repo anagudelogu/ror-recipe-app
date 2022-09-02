@@ -1,38 +1,42 @@
-<div id="recipe-details">
-  <h2><%= @recipe.name %></h2>
-  <small><%= @recipe.public? ? 'Public' : 'Private' %></small>
-  <p>
-    Preparation time: <%= @recipe.preparation_time %> minutes
-  </p>
-  <p>
-    Cooking time: <%= @recipe.cooking_time %> minutes
-  </p>
-  <p>
+<div id="recipe-details" class="flex flex-col min-h-[90vh] max-h-screen items-center justify-center">
+  <div class="my-8 flex flex-col justify-center items-center">
+    <h2 class="font-bold text-2xl text-center"><%= @recipe.name %></h2>
+    <small><%= @recipe.public? ? 'Public' : 'Private' %></small>
+  </div>
+  <div class="flex gap-12 mb-6">
+    <p class="text-xl">
+      Preparation time: <%= @recipe.preparation_time %> minutes
+    </p>
+    <p class="text-xl">
+      Cooking time: <%= @recipe.cooking_time %> minutes
+    </p>
+  </div>
+  <p class="mb-8">
     <%= @recipe.description %>
   </p>
-
-  <%= link_to "Generate shopping list", shopping_list_path %>
+<div class="flex gap-8 mb-8">
+  <%= link_to "Generate shopping list", shopping_list_path, class: 'btn-primary' %>
   <% if @recipe.user_id == current_user.id %>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), data: {turbo: false} %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe), class: 'btn-primary' %>
   <% end %>
-
-  <table>
+</div>
+  <table class="bg-white border border-gray-100 round p-2 mx-auto">
     <thead>
       <tr>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Value</th>
-        <% if @recipe.user_id == current_user.id %> <th>Actions</th><% end %>
+        <th class="p-1 text-center">Food</th>
+        <th class="p-1 text-center">Quantity</th>
+        <th class="p-1 text-center">Value</th>
+        <% if @recipe.user_id == current_user.id %> <th class="p-1 text-center">Actions</th><% end %>
       </tr>
     </thead>
     <tbody>
       <% @ingredients.each do |ing| %>
-        <tr>
-          <td><%= ing.food.name %></td>
-          <td><%= ing.quantity %></td>
-          <td><%= ing.food.price * ing.quantity %></td>
+        <tr class="p-2 text-center"> 
+          <td class="p-2 text-center border border-gray-300"><%= ing.food.name %></td>
+          <td class="p-2 text-center border border-gray-300"><%= ing.quantity %></td>
+          <td class="p-2 text-center border border-gray-300"><%= (ing.food.price * ing.quantity).round(2) %></td>
           <% if @recipe.user_id == current_user.id %>
-           <td><%= button_to "Remove", recipe_recipe_food_path(@recipe, ing), method: :delete, data: { turbo: false } %>
+           <td class="p-2 text-center"><%= button_to "Remove", recipe_recipe_food_path(@recipe, ing), {method: :delete, data: { turbo: false }, class: 'btn-primary'} %>
           </td> <% end %>
         </tr>
       <% end %>
