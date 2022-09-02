@@ -30,7 +30,7 @@
       <tr class="p-2 text-center">
         <th class="p-1 text-center border border-gray-300">TOTAL:</th>
         <td class="p-1 text-center border border-gray-300"><%= total_ingredients(@ingredients) %></td>
-        <td class="p-1 text-center border border-gray-300"><%= total_price(@ingredients) %></td>
+        <td class="p-1 text-center border border-gray-300"><%= total_price(@ingredients).round(2) %></td>
       </tr>
     </tfoot>
   </tbody>
