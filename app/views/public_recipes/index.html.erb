@@ -1,21 +1,27 @@
-<ul id="public-recipes">
+<section class="flex flex-col justify-center items-center pt-10">
+<ul id="public-recipes" class="mt-10 w-full">
   <% @public_recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe_path(recipe) do %>
-        <h3>
+    <li class="border-2 border-slate-800 rounded py-6 px-12 w-1/2 mx-auto my-6">
+      <%= link_to recipe_path(recipe), class: 'flex justify-evenly' do %>
+      <div class="flex-1">
+        <h3 class="text-2xl w-full font-bold">
           <%= recipe.name %>
         </h3>
-        <p>
+        <p class="font-ms">
           By: <%= recipe.user.name %>
         </p>
-        <span>
+      </div>
+      <div class="flex-1">
+        <span class="block">
           Total food items: <%= recipe.foods.size %>
         </span>
 
-        <span>
+        <span class="block">
           Total price: <%= recipe.price %>
         </span>
-        <% end %>
+      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>
+</section>

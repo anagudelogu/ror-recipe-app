@@ -1,18 +1,26 @@
-<div>
-  <h3>Add Food:</h3>
-  <%= form_with model: @food, url: foods_path, method: :post, local: true, data: {turbo: false}, id: "new-food-form" do |f| %>
-    <%= f.label :name, 'Name' %><br>
-    <%= f.text_field :name, label:'Name', placeholder: 'Add the food name...', required: true %><br>
+<div class="flex flex-col min-h-screen max-h-screen items-center justify-center">
+  <h3 class="font-bold text-2xl text-center">Add Food:</h3>
+  <%= form_with model: @food, url: foods_path, method: :post, local: true, data: {turbo: false}, id: "new-food-form", class: 'flex flex-col justify-center items-center' do |f| %>
+    <div class="mt-8">
+      <%= f.label :name, 'Name' %><br>
+      <%= f.text_field :name, label:'Name', placeholder: 'Add the food name...', required: true, class:"block rounded" %><br>
+    </div>
+    
+    <div class="mt-4">
+      <%= f.label :measurement_unit, 'Measurement unit' %><br>
+      <%= f.text_field :measurement_unit, placeholder: 'Add the measurement unit...', class:"block rounded" %><br>
+    </div>
+    
+    <div class="mt-4">
+      <%= f.label :price, 'Price' %><br>
+      <%= f.text_field :price, placeholder: 'Add the price...', required: true, class:"block rounded" %><br>
+    </div>
+    
+    <div class="mt-4">
+      <%= f.label :quantity, 'Quantity' %><br>
+      <%= f.text_field :quantity, placeholder: 'Add the quantity...', required: true, class:"block rounded" %><br>
+    </div>
 
-    <%= f.label :measurement_unit, 'Measurement unit' %><br>
-    <%= f.text_field :measurement_unit, placeholder: 'Add the measurement unit...' %><br>
-
-    <%= f.label :price, 'Price' %><br>
-    <%= f.text_field :price, placeholder: 'Add the price...', required: true %><br>
-
-    <%= f.label :quantity, 'Quantity' %><br>
-    <%= f.text_field :quantity, placeholder: 'Add the quantity...', required: true %><br>
-
-    <%= f.submit "Add new Food" %>
+    <%= f.submit "Add new Food", class: 'btn-primary mt-8' %>
   <% end %>
 </div>
