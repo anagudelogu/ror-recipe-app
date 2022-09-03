@@ -1,0 +1,37 @@
+<h1 class="font-bold text-2xl text-center mb-4">Shopping List</h1>
+<div class="text-center mb-1">TOTAL INGREDIENTS: <%= amount_of_ingredients(@ingredients) %></div>
+<div class="text-center mb-1">TOTAL PRICE: <%= total_price(@ingredients) %></div>
+
+<table class="bg-white border border-gray-100 round p-2 m-auto">
+  <thead>
+    <tr>
+      <th class="p-1 text-center">Food</th>
+      <th class="p-1 text-center">Quantity</th>
+      <th class="p-1 text-center">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.each do |rf| %>
+      <% if ingredient(rf) %>
+        <tr class="p-2 text-center">
+          <td class="p-2 text-center border border-gray-300">
+            <%= ingredient(rf)[:name] %>
+          </td>
+          <td class="p-1 text-center border border-gray-300">
+            <%= ingredient(rf)[:quantity] %>
+          </td>
+          <td class="px-6 text-center border border-gray-300">
+            <%= ingredient(rf)[:price].round(2) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tfoot>
+      <tr class="p-2 text-center">
+        <th class="p-1 text-center border border-gray-300">TOTAL:</th>
+        <td class="p-1 text-center border border-gray-300"><%= total_ingredients(@ingredients) %></td>
+        <td class="p-1 text-center border border-gray-300"><%= total_price(@ingredients).round(2) %></td>
+      </tr>
+    </tfoot>
+  </tbody>
+</table>

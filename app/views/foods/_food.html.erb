@@ -1,0 +1,9 @@
+<tr id= <%= food.id %> class="p-2 text-center">
+  <td class="p-1 text-center border border-gray-300"><%=food.name %></td>
+  <td class="p-1 text-center border border-gray-300"><%=food.measurement_unit %></td>
+  <td class="p-1 text-center border border-gray-300"><%=food.price %></td>
+  <td class="p-1 text-center border border-gray-300"><%=food.quantity %></td>
+  <td>
+    <%= button_to "Delete", food_path(food.id), method: :delete, data: { turbo: false }, class:"btn-primary" %>
+  </td>
+</tr>

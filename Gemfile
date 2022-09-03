@@ -30,6 +30,8 @@ gem 'jbuilder'
 # Linters
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+# https://github.com/bokmann/font-awesome-rails
+gem 'font-awesome-rails'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -47,6 +49,9 @@ gem 'bootsnap', require: false
 
 # https://github.com/heartcombo/devise
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
+
+# https://github.com/CanCanCommunity/cancancan
+gem 'cancancan'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -93,3 +98,5 @@ group :test do
   # https://github.com/colszowka/simplecov
   gem 'simplecov', require: false
 end
+
+gem 'tailwindcss-rails', '~> 2.0'

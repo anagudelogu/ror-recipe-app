@@ -1,0 +1,19 @@
+<section class="flex flex-col min-h-[90vh] max-h-screen items-center justify-center">
+  <h3 class="font-bold text-2xl text-center">Please choose your ingredients here:</h3>
+
+  <%= form_with model: @recipe_food, url: recipe_recipe_foods_path, method: :post, local: true, data: {turbo: false}, class: 'flex flex-col justify-center items-center mb-12', id: "new-recipe-food-form" do |f| %>
+    <div  class="mt-8 w-full">
+      <%= f.label :name, 'Ingredient:' %><br>
+      <%= f.select :food_id, current_user.foods.map { |food| ["#{food.name} (#{food.measurement_unit})", food.id]}, {}, class:"block rounded w-full"  %>
+    </div>
+    <div class="mt-4">
+      <%= f.label :quantity, 'Quantity' %><br>
+      <%= f.text_field :quantity, placeholder: 'Add the quantity...', required: true, class:"block rounded" %><br>
+    </div>
+
+    <%= f.submit "Add new Ingredient", class: 'btn-primary' %>
+  <% end %>
+
+  <h3 class="mb-4">If you didn't found the ingredient you were looking for: </h3>
+  <%= link_to 'Create a new one', new_food_path, data: {turbo: false}, class: 'btn-primary' %>
+</section>

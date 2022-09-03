@@ -1,0 +1,17 @@
+<div>
+  <%= link_to 'Add Food', new_food_path, data: {turbo: false}, class:"btn-primary w-max m-auto mb-4" %>
+</div>
+<table class="bg-white border border-gray-100 round p-2 m-auto" >
+  <thead>
+    <tr >
+        <th class="p-1 text-center">Food</th>
+        <th class="p-1 text-center">Measurement Unit</th>
+        <th class="p-1 text-center">Unit Price</th>
+        <th class="p-1 text-center">Quantity</th>
+        <th class="p-1 text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @foods %>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<section class="flex flex-col min-h-[90vh] max-h-screen items-center justify-center">
+  <h2 class="font-bold text-2xl text-center">New Recipe</h2>
+  <%= form_with model: @recipe, id: 'recipe-form', url: recipes_path, method: :post, data: { turbo: false }, class: 'flex flex-col justify-center items-center' do |f| %>
+    <div class="mt-8">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, placeholder: 'Enter the recipe name...', class:"block rounded" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.label :preparation_time %><br />
+      <%= f.number_field :preparation_time, placeholder: 'Enter the time in minutes...', class:"block rounded" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.label :cooking_time %><br />
+      <%= f.number_field :cooking_time, placeholder: 'Enter the time in minutes...', class:"block rounded" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.label :description %><br />
+      <%= f.text_field :description, placeholder: 'Enter the recipe description...', class:"block rounded" %>
+    </div>
+
+    <div class="mt-4">
+      <%= f.check_box :public %>
+      <%= f.label :public %><br />
+    </div>
+
+    <div>
+      <%= f.submit class: 'btn-primary mt-8' %>
+    </div>
+  <% end %>
+</section>
